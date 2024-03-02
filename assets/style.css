@@ -1,0 +1,68 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    font-family: "Changa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal
+    
+  }
+
+  h1 {
+    font-size: 50px;
+    color:rgb(68, 59, 59);
+  }
+
+  #container {
+    text-align: center;
+  }
+
+  #text-to-read {
+    width: 700px; /* Set width to 400px */
+    height: 350px; /* Optional: Set height */
+    border-radius: 1%;
+    
+  }
+
+  #voices {
+    width: 500px; /* Set width to 200px */
+    margin-bottom: 10px; /* Optional: Add some space below */
+    height: 45px ;
+    font-size: larger;
+  }
+
+  /* Style for stop button */
+  #stopButton {
+    padding: 15px 30px; /* Increase padding for bigger button */
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: #ce0c0c; /* Red color */
+    color: white;
+    border: none ;
+    cursor: pointer;
+
+  }
+
+  .speak {
+    padding: 15px 30px; /* Increase padding for bigger button */
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: hsl(120, 65%, 18%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    cursor: pointer;
+
+  }
+
+  .fa-solid.fa-volume-high {
+   margin-bottom: 20px;
+   font-size: 40px;
+   color:rgb(68, 59, 59);
+  }

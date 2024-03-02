@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  Google fonts and font awesome -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa:wght@200..800&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/969e4e047a.js" crossorigin="anonymous"></script>
+<title>Text to Speech</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <h1>Text to Speech</h1>
+  <i class="fa-solid fa-volume-high"></i>
+<div id="container">
+<textarea id="text-to-read" rows="4" cols="50"></textarea><br>
+<select id="voices">
+  <option value="en-US-Wavenet-A">English (US) Female (Wavenet)</option>
+  <option value="en-US-Wavenet-B">English (US) Male (Wavenet)</option>
+  <option value="en-US-Wavenet-D">English (US) Wavenet Male D</option>
+  <option value="en-US-Wavenet-I">English (US) Wavenet Male I</option>
+  <option value="en-GB-Neural2-B">English (UK) Neural2 Male B</option>
+  <option value="en-GB-Neural2-F">English (UK) Neural2 Female F</option>
+  <option value="en-GB-News-H">English (UK) News Female H</option>
+  <option value="en-GB-News-I">English (UK) News Female I</option>
+  <option value="en-GB-Standard-B">English (UK) Standard Male B</option>
+  <option value="en-GB-Standard-F">English (UK) Standard Female F</option>
+  <option value="en-GB-Wavenet-B">English (UK) Wavenet Male B</option>
+  <option value="en-US-Polyglot-1">English (US) Polyglot Male 1</option>
+  <option value="hu-HU-Standard-A">Hungarian Standard Female A</option>
+  <option value="ro-RO-Standard-A">Romanian Standard Female A</option>
+  <option value="ro-RO-Wavenet-A">Romanian Wavenet Female A</option>
+  
+  <!-- Add other voices as needed -->
+</select>
+<button class="speak" onclick="synthesizeSpeech()">Speak</button>
+<button id="stopButton">Stop</button>
+</div>
+<br><br><br><br>
+<script src="assets/script.js"></script>  
+</body>
+</html>
