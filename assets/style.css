@@ -10,7 +10,6 @@ body {
     background-color: #f5f5f5;
     font-family: "Changa", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
     font-style: normal
     
   }
@@ -33,7 +32,7 @@ body {
   }
 
   #voices {
-    width: 500px; /* Set width to 200px */
+    width: 390px; /* Set width to 200px */
     margin-bottom: 10px; /* Optional: Add some space below */
     height: 45px ;
     font-size: larger;
@@ -62,8 +61,27 @@ body {
 
   }
 
+  #pauseButton {
+    padding: 15px 30px; /* Increase padding for bigger button */
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: hsl(239, 64%, 26%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    cursor: pointer;
+
+  }
+
   .fa-solid.fa-volume-high {
    margin-bottom: 20px;
    font-size: 40px;
    color:rgb(68, 59, 59);
   }
+
+/*  Volume container style */
+#volumeContainer {
+  display: none;
+}
+.volume-icon {
+  cursor: pointer;
+}
