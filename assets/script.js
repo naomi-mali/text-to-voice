@@ -1,55 +1,56 @@
 let audio;
 let isPaused = false;
 let isMuted = false;
-const apiKey = 'AIzaSyC9RjHTEnEVXJ_dD7McJ5vJKCN5fwDQRCQ'; // Replace with your Google Cloud API key
+const apiKey = 'AIzaSyC9RjHTEnEVXJ_dD7McJ5vJKCN5fwDQRCQ';
 
-function synthesizeSpeech() {
-    var text = document.getElementById("text-to-read").value;
-    var voice = document.getElementById("voices").value;
+// Function to synthesize speech
+async function synthesizeSpeech() {
+    const text = document.getElementById("text-to-read").value;
+    const voice = document.getElementById("voices").value;
 
     // Stop previous audio playback if exists
     if (audio) {
-        audio.pause();
-        audio = null;
+        stopSpeech();
     }
 
-    // Make a POST request to Google Cloud Text-to-Speech API
-    $.ajax({
-        type: 'POST',
-        url: 'https://texttospeech.googleapis.com/v1/text:synthesize?key=' + apiKey,
-        contentType: 'application/json',
-        data: JSON.stringify({
-            input: {
-                text: text
+    try {
+        const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            voice: {
-                languageCode: 'en-US',
-                name: voice // Set the selected voice
-            },
-            audioConfig: {
-                audioEncoding: 'MP3'
-            }
-        }),
-        success: function(data) {
-            // Play the audio
-            audio = new Audio('data:audio/mp3;base64,' + data.audioContent);
-            audio.play();
-            audio.onpause = function() {
-                if (isPaused) {
-                    audio.pause();
-                }
-            };
-            audio.volume = isMuted ? 0 : document.getElementById("volumeRange").value; // Update volume based on slider value
-            
-            // Update volume icon based on volume level
-            updateVolumeIcon(audio.volume);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error:', textStatus, errorThrown);
+            body: JSON.stringify({
+                input: { text },
+                voice: { languageCode: 'en-US', name: voice },
+                audioConfig: { audioEncoding: 'MP3' }
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    });
+
+        const data = await response.json();
+        audio = new Audio('data:audio/mp3;base64,' + data.audioContent);
+        playAudio();
+    } catch (error) {
+        console.error('Error:', error);
+        // Handle error gracefully, show a message to the user
+    }
 }
 
+// Function to play audio
+function playAudio() {
+    audio.play();
+    audio.onpause = function() {
+        if (isPaused) {
+            audio.pause();
+        }
+    };
+    audio.volume = isMuted ? 0 : document.getElementById("volumeRange").value;
+}
+
+// Function to pause or resume audio
 function pauseSpeech() {
     if (audio) {
         if (!isPaused) {
@@ -62,44 +63,26 @@ function pauseSpeech() {
     }
 }
 
+// Function to stop audio
 function stopSpeech() {
     isPaused = false;
     if (audio) {
         audio.pause();
-        audio.currentTime = 0; // Reset audio playback to the beginning
+        audio.currentTime = 0;
         audio = null;
     }
 }
 
-// Add event listener for volume change
+// Event listener for volume change
 document.getElementById("volumeRange").addEventListener("change", function() {
     if (audio) {
         audio.volume = this.value;
-        if (this.value == 0) {
-            isMuted = true;
-        } else {
-            isMuted = false;
-        }
-        
-        // Update volume icon based on volume level
-        updateVolumeIcon(this.value);
+        isMuted = this.value == 0;
     }
 });
 
-// Function to update volume icon
-function updateVolumeIcon(volumeLevel) {
-    var volumeIcon = document.getElementById("volumeIcon");
-    if (volumeLevel == 0) {
-        volumeIcon.className = "fa-solid fa-volume-mute volume-icon";
-    } else if (volumeLevel < 0.5) {
-        volumeIcon.className = "fa-solid fa-volume-down volume-icon";
-    } else {
-        volumeIcon.className = "fa-solid fa-volume-high volume-icon";
-    }
-}
-
 // Function to toggle volume container visibility
 function toggleVolume() {
-    var volumeContainer = document.getElementById("volumeContainer");
+    const volumeContainer = document.getElementById("volumeContainer");
     volumeContainer.style.display = volumeContainer.style.display === "none" ? "block" : "none";
 }

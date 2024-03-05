@@ -32,7 +32,7 @@ body {
   }
 
   #voices {
-    width: 390px; /* Set width to 200px */
+    width: 200px; /* Set width to 200px */
     margin-bottom: 10px; /* Optional: Add some space below */
     height: 45px ;
     font-size: larger;
@@ -40,7 +40,7 @@ body {
 
   /* Style for stop button */
   #stopButton {
-    padding: 15px 30px; /* Increase padding for bigger button */
+    padding: 15px 15px; /* Increase padding for bigger button */
     font-size: 16px;
     margin-top: 10px;
     background-color: #ce0c0c; /* Red color */
@@ -51,7 +51,7 @@ body {
   }
 
   .speak {
-    padding: 15px 30px; /* Increase padding for bigger button */
+    padding: 15px 15px; /* Increase padding for bigger button */
     font-size: 16px;
     margin-top: 10px;
     background-color: hsl(120, 65%, 18%);
@@ -62,18 +62,29 @@ body {
   }
 
   #pauseButton {
-    padding: 15px 30px; /* Increase padding for bigger button */
+    padding: 15px 15px; /* Increase padding for bigger button */
     font-size: 16px;
     margin-top: 10px;
     background-color: hsl(239, 64%, 26%);
     color: hsl(0, 0%, 100%);
     border: none;
     cursor: pointer;
+  }
+
+  #volumeButton {
+    padding: 15px 15px; /* Increase padding for bigger button */
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: hsl(281, 60%, 29%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    cursor: pointer;
 
   }
 
+
   .fa-solid.fa-volume-high {
-   margin-bottom: 20px;
+   margin-bottom: 10px;
    font-size: 40px;
    color:rgb(68, 59, 59);
   }
