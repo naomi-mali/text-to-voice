@@ -76,14 +76,17 @@ function playNextAudioChunk(index) {
 }
 
 // Function to pause or resume audio
-function pauseSpeech() {
+function togglePause() {
     isPaused = !isPaused;
+    const pauseButton = document.getElementById("pauseButton");
     if (isPaused) {
+        pauseButton.textContent = "Resume";
         audioQueue.forEach(audioChunk => {
             audioChunk.pause();
         });
     } else {
-        const currentIndex = audioQueue.findIndex(audio => !audio.paused);
+        pauseButton.textContent = "Pause";
+        const currentIndex = audioQueue.findIndex(audio => audio.paused);
         playNextAudioChunk(currentIndex);
     }
 }
@@ -91,6 +94,7 @@ function pauseSpeech() {
 // Function to stop audio
 function stopSpeech() {
     isPaused = false;
+    document.getElementById("pauseButton").textContent = "Pause";
     audioQueue.forEach(audioChunk => {
         audioChunk.pause();
         audioChunk.currentTime = 0;

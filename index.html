@@ -38,8 +38,9 @@
   <option value="en-US-Wavenet-A">English (US) Female (Wavenet)</option>
   <option value="en-US-Wavenet-B">English (US) Male (Wavenet)</option>
 </select>
+<!-- Buttons -->
 <button class="speak" onclick="synthesizeSpeech()">Speak</button>
-<button id="pauseButton" onclick="pauseSpeech()">Pause</button>
+<button id="pauseButton" onclick="togglePause()">Pause</button>
 <button id="stopButton" onclick="stopSpeech()">Stop</button>
 <button id="volumeButton" onclick="toggleVolume()">Volume</button>
 <input type="range" id="volumeRange" min="0" max="1" step="0.01" value="1">
