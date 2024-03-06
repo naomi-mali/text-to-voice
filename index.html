@@ -37,15 +37,14 @@
   <option value="ro-RO-Wavenet-A">Romanian Wavenet Female A</option>
   <option value="en-US-Wavenet-A">English (US) Female (Wavenet)</option>
   <option value="en-US-Wavenet-B">English (US) Male (Wavenet)</option>
-  <!-- Add other voices as needed -->
 </select>
-<button class="speak" onclick="synthesizeSpeech()">Speak</button>
-<button id="pauseButton" onclick="pauseSpeech()">Pause</button>
-<button id="stopButton" onclick="stopSpeech()">Stop</button>
-  <button id="volumeButton" onclick="toggleVolume()"> Volume</button>
-  <div id="volumeContainer" style="display: none;">
-    <input type="range" min="0" max="1" step="0.1" value="1" id="volumeRange">
-  </div>
+<button onclick="synthesizeSpeech()">Synthesize Speech</button>
+<button onclick="pauseSpeech()">Pause/Resume</button>
+<button onclick="stopSpeech()">Stop</button>
+<button onclick="toggleVolume()">Toggle Volume</button>
+<input type="range" id="volumeRange" min="0" max="1" step="0.01" value="1">
+<div id="volumeContainer" style="display: none;">
+    Volume: <span id="volumeDisplay">100%</span>
 </div>
 </div>
 <br><br><br><br>
